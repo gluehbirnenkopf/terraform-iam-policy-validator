@@ -99,18 +99,22 @@ class Validator:
 def get_policy_type(resource_type, resource_attribute_name=None):
     # https://registry.terraform.io/providers/hashicorp/aws/latest/docs
     if resource_type in [
-        "aws_iam_group_policy",
-        "aws_iam_policy",
-        "aws_iam_role",
-        "aws_iam_role_policy",
-        "aws_iam_user_policy",
-    ]:
-        if (
-            resource_type == "aws_iam_role"
-            and resource_attribute_name == "assume_role_policy"
-        ):
-            return "RESOURCE_POLICY"
-        return "IDENTITY_POLICY"
+            "aws_iam_group_policy",
+            "aws_iam_policy",
+            "aws_iam_role",
+            "aws_iam_role_policy",
+            "aws_iam_user_policy",
+            "aws_organizations_policy",  # Add this line for SCPs
+        ]:
+            if (
+                resource_type == "aws_iam_role"
+                and resource_attribute_name == "assume_role_policy"
+            ):
+                return "RESOURCE_POLICY"
+            # Detect Service Control Policy type
+            if resource_type == "aws_organizations_policy":
+                return "SERVICE_CONTROL_POLICY"
+            return "IDENTITY_POLICY"
     else:
         return "RESOURCE_POLICY"
 
