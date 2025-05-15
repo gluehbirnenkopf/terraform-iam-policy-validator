@@ -19,7 +19,7 @@ class TestAccessAnalyzer:
     def test_a2_policy_validation(self):
         file = _load_json_file("test/iam_policy/test_plan.json")
         plan = TerraformPlan(**file)
-        check = Validator("611215368770", "us-west-2", "aws")
+        check = Validator("123456789012", "us-west-2", "aws")
         check.run(plan)
         findings = _load_json_file("test/iam_policy/findings.json")
         assert (
@@ -30,10 +30,9 @@ class TestAccessAnalyzer:
     def test_a2_scp_validation(self):
         file = _load_json_file("test/scp/test_plan.json")
         plan = TerraformPlan(**file)
-        check = Validator("611215368770", "us-west-2", "aws")
+        check = Validator("123456789012", "us-west-2", "aws")
         check.run(plan)
         findings = _load_json_file("test/scp/findings.json")
-        print(check.findings.to_json())
         assert (
             Reporter(None, ["ERROR"], None).build_report_from(check.findings).to_json()
             == findings
