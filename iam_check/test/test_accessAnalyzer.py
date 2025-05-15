@@ -33,6 +33,7 @@ class TestAccessAnalyzer:
         check = Validator("611215368770", "us-west-2", "aws")
         check.run(plan)
         findings = _load_json_file("test/scp/findings.json")
+        print(check.findings.to_json())
         assert (
             Reporter(None, ["ERROR"], None).build_report_from(check.findings).to_json()
             == findings

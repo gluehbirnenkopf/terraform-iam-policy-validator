@@ -3,20 +3,16 @@
     {
       "findingType": "ERROR",
       "code": "SCP_SYNTAX_ERROR_NOTRESOURCE",
-      "message": "The policy document grants access to perform one or more of the listed actions.",
-      "resourceName": "fakeBucket",
-      "policyName": "aws_s3_bucket_policy.allow_access_from_another_account",
+      "message": "test",
+      "resourceName": "test",
+      "policyName": "test",
       "details": {
         "result": "FAIL",
         "reasons": [
           {
             "description": "SCPs do not support the NotResource element. Update the policy to use Resource instead.",
             "statementIndex": 0,
-            "accessInput": [
-              {
-                "actions": ["s3:ListBucket"]
-              }
-            ]
+            "accessInput": []
           }
         ],
         "message": "The policy document grants access to perform one or more of the listed actions."
