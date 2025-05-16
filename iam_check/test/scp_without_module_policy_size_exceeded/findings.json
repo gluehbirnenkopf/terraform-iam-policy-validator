@@ -1,0 +1,35 @@
+{
+    "BlockingFindings": [
+        {
+            "findingType": "ERROR",
+            "code": "POLICY_SIZE_EXCEEDS_SCP_QUOTA",
+            "message": "The 5187 characters in the service control policy (SCP) exceed the 5120 character maximum for SCPs. We recommend that you use multiple granular policies.",
+            "resourceName": "security_baseline",
+            "policyName": "aws_organizations_policy.demo_scp_long",
+            "details": {
+                "findingDetails": "The 5187 characters in the service control policy (SCP) exceed the 5120 character maximum for SCPs. We recommend that you use multiple granular policies.",
+                "findingType": "ERROR",
+                "issueCode": "POLICY_SIZE_EXCEEDS_SCP_QUOTA",
+                "learnMoreLink": "https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-policy-checks.html#access-analyzer-reference-policy-checks-error-policy-size-exceeds-scp-quota",
+                "locations": [
+                    {
+                        "path": [],
+                        "span": {
+                            "start": {
+                                "line": 1,
+                                "column": 0,
+                                "offset": 0
+                            },
+                            "end": {
+                                "line": 89,
+                                "column": 1,
+                                "offset": 5187
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "NonBlockingFindings": []
+}
