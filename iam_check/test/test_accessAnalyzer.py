@@ -38,14 +38,25 @@ class TestAccessAnalyzer:
             == findings
         )
 
-    def test_a2_scp_long_validation(self):
-        file = _load_json_file("test/scp_without_module_policy_size_exceeded/test_plan.json")
+    def test_a2_scp_without_module_policy_size_exceeded_5187(self):
+        file = _load_json_file("test/scp_without_module_policy_size_exceeded_5187/test_plan.json")
         plan = TerraformPlan(**file)
         check = Validator("123456789012", "us-west-2", "aws")
         check.run(plan)
-        findings = _load_json_file("test/scp_without_module_policy_size_exceeded/findings.json")
+        findings = _load_json_file("test/scp_without_module_policy_size_exceeded_5187/findings.json")
         assert (
             Reporter(None, ["ERROR"], None).build_report_from(check.findings).to_json()
+            == findings
+        )
+
+    def test_a2_scp_without_module_policy_size_not_exceeded_5094(self):
+        file = _load_json_file("test/scp_without_module_policy_size_not_exceeded_5094/test_plan.json")
+        plan = TerraformPlan(**file)
+        check = Validator("123456789012", "us-west-2", "aws")
+        check.run(plan)
+        findings = _load_json_file("test/scp_without_module_policy_size_not_exceeded_5094/findings.json")
+        assert (
+            Reporter(None, None, None).build_report_from(check.findings).to_json()
             == findings
         )
 
