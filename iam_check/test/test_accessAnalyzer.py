@@ -38,6 +38,17 @@ class TestAccessAnalyzer:
             == findings
         )
 
+    def test_a2_scp_validation_with_module(self):
+        file = _load_json_file("test/scp_with_module/test_plan.json")
+        plan = TerraformPlan(**file)
+        check = Validator("123456789012", "us-west-2", "aws")
+        check.run(plan)
+        findings = _load_json_file("test/scp_with_module/findings.json")
+        assert (
+            Reporter(None, ["ERROR"], None).build_report_from(check.findings).to_json()
+            == findings
+        )
+
     def test_a2_scp_without_module_policy_size_exceeded_5187(self):
         file = _load_json_file("test/scp_without_module_policy_size_exceeded_5187/test_plan.json")
         plan = TerraformPlan(**file)

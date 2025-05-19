@@ -119,8 +119,8 @@ def get_terraform_resource_type_from_address(ref):
     for part in parts:
         if part in TF_RESOURCE_TYPES:
             return part
-        else:
-            return ref.split(".")[0]
+
+    return ref.split(".")[0]
 
 def get_policy_type(resource_type, resource_attribute_name=None):
     # https://registry.terraform.io/providers/hashicorp/aws/latest/docs
