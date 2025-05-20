@@ -36,6 +36,16 @@ RESOURCE_TYPE_MAP = {
     "assume_role_policy": "AWS::IAM::AssumeRolePolicyDocument",
 }
 
+TF_RESOURCE_TYPES = [
+    "aws_iam_group_policy",
+    "aws_iam_policy",
+    "aws_iam_role",
+    "aws_iam_role_policy",
+    "aws_iam_user_policy",
+    "aws_organizations_policy",
+
+]
+
 
 class Validator:
     def __init__(self, account_id, region, partition):
@@ -64,7 +74,7 @@ class Validator:
         policies = plan.findPolicies()
         for ref, policy in policies.items():
             LOGGER.info(f"check policy at: {ref}")
-            policy_resource_type = ref.split(".")[0]
+            policy_resource_type = get_terraform_resource_type_from_address(ref)
             policy_name = ".".join(ref.split(".")[0:-1])
             resource_name = plan.getResourceName(policy_name)
             p = iamPolicy.Policy(json=policy)
@@ -103,16 +113,18 @@ class Validator:
             )
 
 
+def get_terraform_resource_type_from_address(ref):
+    parts = ref.split(".")
+    # Check each part for a match in the supported list, if no match is found default to the first part
+    for part in parts:
+        if part in TF_RESOURCE_TYPES:
+            return part
+
+    return ref.split(".")[0]
+
 def get_policy_type(resource_type, resource_attribute_name=None):
     # https://registry.terraform.io/providers/hashicorp/aws/latest/docs
-    if resource_type in [
-            "aws_iam_group_policy",
-            "aws_iam_policy",
-            "aws_iam_role",
-            "aws_iam_role_policy",
-            "aws_iam_user_policy",
-            "aws_organizations_policy",
-        ]:
+    if resource_type in TF_RESOURCE_TYPES:
             if (
                 resource_type == "aws_iam_role"
                 and resource_attribute_name == "assume_role_policy"

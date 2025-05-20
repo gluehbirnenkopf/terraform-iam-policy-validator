@@ -1,0 +1,498 @@
+{
+    "format_version": "1.2",
+    "terraform_version": "1.11.2",
+    "planned_values": {
+        "root_module": {
+            "resources": [
+                {
+                    "address": "aws_organizations_policy.demo_scp_long",
+                    "mode": "managed",
+                    "type": "aws_organizations_policy",
+                    "name": "demo_scp_long",
+                    "provider_name": "registry.terraform.io/hashicorp/aws",
+                    "schema_version": 0,
+                    "values": {
+                        "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"denyTagActionsOnAbacTags\",\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"secretsmanager:Untag*\",\n        \"secretsmanager:Tag*\",\n        \"lambda:Untag*\",\n        \"lambda:Tag*\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"ArnNotLike\": {\n          \"aws:PrincipalARN\": [\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21\"\n          ]\n        },\n        \"ForAnyValue:StringEquals\": {\n          \"aws:TagKeys\": \"ABAC_EXAMPLE_TAG\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"denyTagActionsOnAbacProtectedByScpTag\",\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"secretsmanager:Untag*\",\n        \"secretsmanager:Tag*\",\n        \"lambda:Untag*\",\n        \"lambda:Tag*\",\n        \"ec2:DeleteTags\",\n        \"ec2:CreateTags\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"ArnNotLike\": {\n          \"aws:PrincipalARN\": [\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21\"\n          ]\n        },\n        \"ForAnyValue:StringEquals\": {\n          \"aws:TagKeys\": \"ProtectedBySCP\"\n        }\n      }\n    }\n  ]\n}",
+                        "description": "A baseline SCP for Security related controls",
+                        "name": "security_baseline",
+                        "skip_destroy": null,
+                        "tags": null,
+                        "type": "SERVICE_CONTROL_POLICY"
+                    },
+                    "sensitive_values": {
+                        "tags_all": {}
+                    }
+                }
+            ]
+        }
+    },
+    "resource_changes": [
+        {
+            "address": "aws_organizations_policy.demo_scp_long",
+            "mode": "managed",
+            "type": "aws_organizations_policy",
+            "name": "demo_scp_long",
+            "provider_name": "registry.terraform.io/hashicorp/aws",
+            "change": {
+                "actions": [
+                    "create"
+                ],
+                "before": null,
+                "after": {
+                    "content": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"denyTagActionsOnAbacTags\",\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"secretsmanager:Untag*\",\n        \"secretsmanager:Tag*\",\n        \"lambda:Untag*\",\n        \"lambda:Tag*\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"ArnNotLike\": {\n          \"aws:PrincipalARN\": [\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21\"\n          ]\n        },\n        \"ForAnyValue:StringEquals\": {\n          \"aws:TagKeys\": \"ABAC_EXAMPLE_TAG\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"denyTagActionsOnAbacProtectedByScpTag\",\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"secretsmanager:Untag*\",\n        \"secretsmanager:Tag*\",\n        \"lambda:Untag*\",\n        \"lambda:Tag*\",\n        \"ec2:DeleteTags\",\n        \"ec2:CreateTags\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"ArnNotLike\": {\n          \"aws:PrincipalARN\": [\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21\"\n          ]\n        },\n        \"ForAnyValue:StringEquals\": {\n          \"aws:TagKeys\": \"ProtectedBySCP\"\n        }\n      }\n    }\n  ]\n}",
+                    "description": "A baseline SCP for Security related controls",
+                    "name": "security_baseline",
+                    "skip_destroy": null,
+                    "tags": null,
+                    "type": "SERVICE_CONTROL_POLICY"
+                },
+                "after_unknown": {
+                    "arn": true,
+                    "id": true,
+                    "tags_all": true
+                },
+                "before_sensitive": false,
+                "after_sensitive": {
+                    "tags_all": {}
+                }
+            }
+        }
+    ],
+    "prior_state": {
+        "format_version": "1.0",
+        "terraform_version": "1.11.2",
+        "values": {
+            "root_module": {
+                "resources": [
+                    {
+                        "address": "data.aws_iam_policy_document.long_policy_document",
+                        "mode": "data",
+                        "type": "aws_iam_policy_document",
+                        "name": "long_policy_document",
+                        "provider_name": "registry.terraform.io/hashicorp/aws",
+                        "schema_version": 0,
+                        "values": {
+                            "id": "3189867757",
+                            "json": "{\n  \"Version\": \"2012-10-17\",\n  \"Statement\": [\n    {\n      \"Sid\": \"denyTagActionsOnAbacTags\",\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"secretsmanager:Untag*\",\n        \"secretsmanager:Tag*\",\n        \"lambda:Untag*\",\n        \"lambda:Tag*\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"ArnNotLike\": {\n          \"aws:PrincipalARN\": [\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21\"\n          ]\n        },\n        \"ForAnyValue:StringEquals\": {\n          \"aws:TagKeys\": \"ABAC_EXAMPLE_TAG\"\n        }\n      }\n    },\n    {\n      \"Sid\": \"denyTagActionsOnAbacProtectedByScpTag\",\n      \"Effect\": \"Deny\",\n      \"Action\": [\n        \"secretsmanager:Untag*\",\n        \"secretsmanager:Tag*\",\n        \"lambda:Untag*\",\n        \"lambda:Tag*\",\n        \"ec2:DeleteTags\",\n        \"ec2:CreateTags\"\n      ],\n      \"Resource\": \"*\",\n      \"Condition\": {\n        \"ArnNotLike\": {\n          \"aws:PrincipalARN\": [\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20\",\n            \"arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21\"\n          ]\n        },\n        \"ForAnyValue:StringEquals\": {\n          \"aws:TagKeys\": \"ProtectedBySCP\"\n        }\n      }\n    }\n  ]\n}",
+                            "override_json": null,
+                            "override_policy_documents": null,
+                            "policy_id": null,
+                            "source_json": null,
+                            "source_policy_documents": null,
+                            "statement": [
+                                {
+                                    "actions": [
+                                        "lambda:Tag*",
+                                        "lambda:Untag*",
+                                        "secretsmanager:Tag*",
+                                        "secretsmanager:Untag*"
+                                    ],
+                                    "condition": [
+                                        {
+                                            "test": "ArnNotLike",
+                                            "values": [
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21"
+                                            ],
+                                            "variable": "aws:PrincipalARN"
+                                        },
+                                        {
+                                            "test": "ForAnyValue:StringEquals",
+                                            "values": [
+                                                "ABAC_EXAMPLE_TAG"
+                                            ],
+                                            "variable": "aws:TagKeys"
+                                        }
+                                    ],
+                                    "effect": "Deny",
+                                    "not_actions": [],
+                                    "not_principals": [],
+                                    "not_resources": [],
+                                    "principals": [],
+                                    "resources": [
+                                        "*"
+                                    ],
+                                    "sid": "denyTagActionsOnAbacTags"
+                                },
+                                {
+                                    "actions": [
+                                        "ec2:CreateTags",
+                                        "ec2:DeleteTags",
+                                        "lambda:Tag*",
+                                        "lambda:Untag*",
+                                        "secretsmanager:Tag*",
+                                        "secretsmanager:Untag*"
+                                    ],
+                                    "condition": [
+                                        {
+                                            "test": "ArnNotLike",
+                                            "values": [
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21"
+                                            ],
+                                            "variable": "aws:PrincipalARN"
+                                        },
+                                        {
+                                            "test": "ForAnyValue:StringEquals",
+                                            "values": [
+                                                "ProtectedBySCP"
+                                            ],
+                                            "variable": "aws:TagKeys"
+                                        }
+                                    ],
+                                    "effect": "Deny",
+                                    "not_actions": [],
+                                    "not_principals": [],
+                                    "not_resources": [],
+                                    "principals": [],
+                                    "resources": [
+                                        "*"
+                                    ],
+                                    "sid": "denyTagActionsOnAbacProtectedByScpTag"
+                                }
+                            ],
+                            "version": "2012-10-17"
+                        },
+                        "sensitive_values": {
+                            "statement": [
+                                {
+                                    "actions": [
+                                        false,
+                                        false,
+                                        false,
+                                        false
+                                    ],
+                                    "condition": [
+                                        {
+                                            "values": [
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "values": [
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "not_actions": [],
+                                    "not_principals": [],
+                                    "not_resources": [],
+                                    "principals": [],
+                                    "resources": [
+                                        false
+                                    ]
+                                },
+                                {
+                                    "actions": [
+                                        false,
+                                        false,
+                                        false,
+                                        false,
+                                        false,
+                                        false
+                                    ],
+                                    "condition": [
+                                        {
+                                            "values": [
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false,
+                                                false
+                                            ]
+                                        },
+                                        {
+                                            "values": [
+                                                false
+                                            ]
+                                        }
+                                    ],
+                                    "not_actions": [],
+                                    "not_principals": [],
+                                    "not_resources": [],
+                                    "principals": [],
+                                    "resources": [
+                                        false
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "configuration": {
+        "provider_config": {
+            "aws": {
+                "name": "aws",
+                "full_name": "registry.terraform.io/hashicorp/aws",
+                "version_constraint": "~\u003e 4.0"
+            }
+        },
+        "root_module": {
+            "resources": [
+                {
+                    "address": "aws_organizations_policy.demo_scp_long",
+                    "mode": "managed",
+                    "type": "aws_organizations_policy",
+                    "name": "demo_scp_long",
+                    "provider_config_key": "aws",
+                    "expressions": {
+                        "content": {
+                            "references": [
+                                "data.aws_iam_policy_document.long_policy_document.json",
+                                "data.aws_iam_policy_document.long_policy_document"
+                            ]
+                        },
+                        "description": {
+                            "constant_value": "A baseline SCP for Security related controls"
+                        },
+                        "name": {
+                            "constant_value": "security_baseline"
+                        }
+                    },
+                    "schema_version": 0
+                },
+                {
+                    "address": "data.aws_iam_policy_document.long_policy_document",
+                    "mode": "data",
+                    "type": "aws_iam_policy_document",
+                    "name": "long_policy_document",
+                    "provider_config_key": "aws",
+                    "expressions": {
+                        "statement": [
+                            {
+                                "actions": {
+                                    "constant_value": [
+                                        "secretsmanager:Tag*",
+                                        "secretsmanager:Untag*",
+                                        "lambda:Tag*",
+                                        "lambda:Untag*"
+                                    ]
+                                },
+                                "condition": [
+                                    {
+                                        "test": {
+                                            "constant_value": "ForAnyValue:StringEquals"
+                                        },
+                                        "values": {
+                                            "constant_value": [
+                                                "ABAC_EXAMPLE_TAG"
+                                            ]
+                                        },
+                                        "variable": {
+                                            "constant_value": "aws:TagKeys"
+                                        }
+                                    },
+                                    {
+                                        "test": {
+                                            "constant_value": "ArnNotLike"
+                                        },
+                                        "values": {
+                                            "constant_value": [
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21"
+                                            ]
+                                        },
+                                        "variable": {
+                                            "constant_value": "aws:PrincipalARN"
+                                        }
+                                    }
+                                ],
+                                "effect": {
+                                    "constant_value": "Deny"
+                                },
+                                "resources": {
+                                    "constant_value": [
+                                        "*"
+                                    ]
+                                },
+                                "sid": {
+                                    "constant_value": "denyTagActionsOnAbacTags"
+                                }
+                            },
+                            {
+                                "actions": {
+                                    "constant_value": [
+                                        "secretsmanager:Tag*",
+                                        "secretsmanager:Untag*",
+                                        "lambda:Tag*",
+                                        "lambda:Untag*",
+                                        "ec2:CreateTags",
+                                        "ec2:DeleteTags"
+                                    ]
+                                },
+                                "condition": [
+                                    {
+                                        "test": {
+                                            "constant_value": "ForAnyValue:StringEquals"
+                                        },
+                                        "values": {
+                                            "constant_value": [
+                                                "ProtectedBySCP"
+                                            ]
+                                        },
+                                        "variable": {
+                                            "constant_value": "aws:TagKeys"
+                                        }
+                                    },
+                                    {
+                                        "test": {
+                                            "constant_value": "ArnNotLike"
+                                        },
+                                        "values": {
+                                            "constant_value": [
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName1",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName2",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName3",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName4",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName5",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName6",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName7",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName8",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName9",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName10",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName11",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName12",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName13",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName14",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName15",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName16",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName17",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName18",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName19",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName20",
+                                                "arn:aws:iam::*:role/ThisIsAnExceptionRoleWithIncredibleLongName21"
+                                            ]
+                                        },
+                                        "variable": {
+                                            "constant_value": "aws:PrincipalARN"
+                                        }
+                                    }
+                                ],
+                                "effect": {
+                                    "constant_value": "Deny"
+                                },
+                                "resources": {
+                                    "constant_value": [
+                                        "*"
+                                    ]
+                                },
+                                "sid": {
+                                    "constant_value": "denyTagActionsOnAbacProtectedByScpTag"
+                                }
+                            }
+                        ]
+                    },
+                    "schema_version": 0
+                }
+            ]
+        }
+    },
+    "relevant_attributes": [
+        {
+            "resource": "data.aws_iam_policy_document.long_policy_document",
+            "attribute": [
+                "json"
+            ]
+        }
+    ],
+    "timestamp": "2025-05-16T13:48:53Z",
+    "applyable": true,
+    "complete": true,
+    "errored": false
+}
